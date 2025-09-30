@@ -2,7 +2,7 @@
   <div>
     <HomeHero />
     <div class="w-full max-w-9/10">
-      <HomeInfo />
+      <HomeInfobar />
       <HomeSidebar />
       <div class="container">
 
