@@ -1,5 +1,5 @@
 <template>
-  <div class="hero bg-base-200 h-24 min-h-[55vh]" :style="backgroundImage">
+  <div class="hero bg-base-200 h-24 min-h-[40vh]" :style="backgroundImage">
     <div class="hero-overlay" />
     <div class="hero-content text-neutral-content text-center">
       <div class="max-w-md">
