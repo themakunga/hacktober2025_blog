@@ -9,7 +9,14 @@ const { data: posts } = await useAsyncData(() => queryCollection('content')
     <div v-if="posts">
       <div v-for="post in posts" :key="post.path" class="mb-6">
         <NuxtLink :to="post.path">
-          <CardPost :title="post.title" :cover="post.cover" />
+          <CardPost :title="post.title" :cover="post.cover" :author="post.author" :decription="post.description">
+            <template #cover>
+              <img :src="post.cover">
+            </template>
+            <template #desciption>
+              <p>{{ post.description }}</p>
+            </template>
+          </CardPost>
         </NuxtLink>
       </div>
     </div>

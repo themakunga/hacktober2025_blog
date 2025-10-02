@@ -1,6 +1,5 @@
 <template>
   <div class="text-center content-center">
-    <pre>{{ data }}</pre>
     <div class="card bg-base-100 shadow-sm text-center">
       <figure class="px-10 pt-10">
         <div class="avatar">
