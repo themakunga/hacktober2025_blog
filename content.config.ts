@@ -11,11 +11,12 @@ export default defineContentConfig({
       // source: 'posts/**/*.md',
       schema: z.object({
         title: z.string(),
-        extract: z.string(),
+        description: z.string(),
         date: z.date(),
         cover: z.string(),
         tags: z.array(z.string()),
         published: z.boolean(),
+        author: z.string(),
       }),
     }),
     authors: defineCollection({
