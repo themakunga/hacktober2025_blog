@@ -6,10 +6,12 @@ const { data: post } = await useAsyncData(() => queryCollection('content').path(
 </script>
 
 <template>
-  <main class="container mx-auto py-10">
+  <main class="w-full mx-auto py-10">
     <NuxtLink to="/" class="text-blue-600 hover:underline">&larr; Regresar al inicio</NuxtLink>
-    <article>
-      <ContentRenderer :value="post" />
+    <article class="prose w-full">
+      
+      <ContentRenderer class="w-full" :value="post" />
+
     </article>
 
   </main>

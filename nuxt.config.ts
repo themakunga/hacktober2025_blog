@@ -15,5 +15,60 @@ export default defineNuxtConfig({
     plugins: [tailWindCss()],
   },
 
-  css: ['~/assets/app.css']
+  css: ['~/assets/app.css'],
+
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          depth: 3,
+          searchDepth: 3,
+        },
+        highlight: {
+          theme: 'tokyo-night',
+          langs: [
+            'markdown',
+            'mermaid',
+            'js',
+            'tf',
+            'ts',
+            'json',
+            'html',
+            'vue',
+            'shell',
+            'mdc',
+            'yaml',
+            'md',
+            'toml',
+            'sql',
+            'docker',
+            'dotenv',
+            'git-commit',
+            'git-rebase',
+            'go',
+            'haml',
+            'hcl',
+            'http',
+            'lua',
+            'nginx',
+            'nix',
+            'php',
+            'plsql',
+            'postcss',
+            'prisma',
+            'pug',
+            'python',
+            'regexp',
+            'ruby',
+            'rust',
+            'shellscript',
+            'terraform',
+            'typst',
+            'vue-html',
+            'xml',
+          ],
+        }
+      }
+    }
+  }
 })
