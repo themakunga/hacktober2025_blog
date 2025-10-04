@@ -1,4 +1,4 @@
-import {transformContentFile, transformYaml, countWordsAndTime } from './utils/functions';
+import {transformContentFileBody, transformYaml, countWordsAndTime } from './utils/functions';
 import tailWindCss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-configi
 
@@ -33,10 +33,11 @@ export default defineNuxtConfig({
 
   hooks: {
     'content:file:beforeParse'(ctx) {
-      const {file, content} = ctx;
+      const {file} = ctx;
       if (file.extension === '.md') {
         console.log('transform content')
-        transformContentFile(file);
+        const fileTransformed = transformContentFileBody(file.body);
+        file.body = fileTransformed;
       }
       if (['.yaml', '.yml'].includes(file.extension!)) {
         file.body = transformYaml(file.body)
@@ -114,6 +115,11 @@ export default defineNuxtConfig({
     }
   },
   image: {
-    domains: ['raw.githubusercontent.com']
+    format: ['avif','webp', 'png'],
+    quality: 80,
+    domains: ['raw.githubusercontent.com'],
+    alias: {
+      gitimage: 'https://raw.githubusercontent.com/themakunga/hacktober2025_blog_post/main/'
+    }
   }
 })

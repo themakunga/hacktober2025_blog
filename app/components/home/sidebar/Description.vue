@@ -4,7 +4,10 @@
       <figure class="px-10 pt-10">
         <div class="avatar">
           <div class="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-            <img :src="profile.avatar" :alt="profile.name">
+            <NuxtImg
+              :src="profile.avatar"
+              :alt="profile.name"
+            />
           </div>
         </div>
       </figure>
@@ -16,9 +19,19 @@
         <p>{{ profile.description }}</p>
         <div class="card-actions" />
         <div class="flex">
-          <a v-for="item in profile.socials" :key="item.name" role="button" class="btn btn-lg btn-ghost"
-            :href="item.url" target="_blank" :aria-label="`icon link to ${item.name}`">
-            <Icon size="2rem" :name="item.icon" />
+          <a
+            v-for="item in profile.socials"
+            :key="item.name"
+            role="button"
+            class="btn btn-lg btn-ghost"
+            :href="item.url"
+            target="_blank"
+            :aria-label="`icon link to ${item.name}`"
+          >
+            <Icon
+              size="2rem"
+              :name="item.icon"
+            />
           </a>
         </div>
       </div>
