@@ -9,13 +9,15 @@
         </div>
       </figure>
       <div class="card-body items-center text-center text-balance">
-        <h2 class="card-title">{{ profile.name }}</h2>
+        <h2 class="card-title">
+          {{ profile.name }}
+        </h2>
         <span>{{ profile.pronouns }}</span>
         <p>{{ profile.description }}</p>
         <div class="card-actions" />
         <div class="flex">
           <a v-for="item in profile.socials" :key="item.name" role="button" class="btn btn-lg btn-ghost"
-            :href="item.url" target="_blank">
+            :href="item.url" target="_blank" :aria-label="`icon link to ${item.name}`">
             <Icon size="2rem" :name="item.icon" />
           </a>
         </div>

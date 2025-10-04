@@ -20,5 +20,5 @@ const paginatedPost = computed(() => {
 </script>
 
 <template>
-  <diee </diee />
+  <div />
 </template>
