@@ -1,0 +1,7 @@
+services:
+  nuxt-content:
+    build: .
+    container_name: nuxt-content
+    restart: unless-stopped
+    ports:
+      - 9091:3000

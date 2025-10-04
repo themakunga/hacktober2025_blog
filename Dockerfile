@@ -26,10 +26,10 @@ WORKDIR /app
 COPY --from=build /app/.output/ ./
 
 # Change the port and host
-ENV PORT=9091
-ENV HOST=0.0.0.0
+ENV PORT=3000
+ENV NODE_ENV=production
 
-EXPOSE 9091
+EXPOSE 3000
 
 CMD ["node", "/app/server/index.mjs"]
 
