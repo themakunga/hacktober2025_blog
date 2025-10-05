@@ -1,5 +1,5 @@
 <template>
-  <article class="card card-md bg-base-100 w-full shadow-sm hover:shadow-md transition-shadow duration-300">
+  <article class="card card-md px-3 bg-base-100 w-full shadow-sm hover:shadow-md transition-shadow duration-300">
     <figure
       v-if="$slots.cover || (showCover && cover)"
       class="max-h-45"
@@ -13,7 +13,7 @@
         >
         <div
           v-else-if="showPlaceholder"
-          class="w-full h-64 flex items-center justify-center text-base-content opacity-40"
+          class="w-full h- flex items-center justify-center text-base-content opacity-40"
         >
           <svg
             class="w-12 h-12"
@@ -31,20 +31,68 @@
         </div>
       </slot>
     </figure>
-    <div class="card-body">
-      <h2 class="card-title">
-        {{ title }}
-      </h2>
-      <slot name="description">
-        <p>{{ description }}</p>
-      </slot>
+    <div class="card-body grid grid-cols-[1fr_auto] items-baseline-last">
+      <div>
+        <h2 class="card-title">
+          {{ title }}
+        </h2>
+        <div class="flex items-baseline-last">
+          <div
+            v-if="isNew(date)"
+            class="badge badge-warning badge-xs"
+          >
+            Nuevo post
+          </div>
+          <NuxtLink
+            v-for="(tag, idx) in tags"
+            :key="idx"
+            :to="`/tags/${tag}`"
+          >
+            <div class="badge badge-info badge-xs">
+              {{ tag }}
+            </div>
+          </NuxtLink>
+
+          <slot name="badges" />
+        </div>
+        <slot name="description">
+          <p class="pt-2">
+            {{ description }}
+          </p>
+        </slot>
+        <slot name="navegation">
+          <NuxtLink
+            :to="path"
+            class="btn btn-link btn-sm"
+          >
+            Leer mas...
+          </NuxtLink>
+        </slot>
+      </div>
+      <div class="grid grid-cols-[1fr auto]">
+        <slot name="author">
+          <span class="items-end text-base-content/60">por: {{ author }}</span>
+        </slot>
+        <slot name="date">
+          <span class="items-end text-base-content/50">{{ formatDate(date) }}</span>
+        </slot>
+        <slot name="readingTime">
+          <span class="items-end text-base-content/30">tiempo de lectura: {{ readingTime }} minutos</span>
+        </slot>
+      </div>
     </div>
   </article>
 </template>
 
 <script setup>
+import { isNewPost, formatDate } from '~/utils/date-functions';
+
 defineProps({
   title: {
+    type: String,
+    required: true,
+  },
+  path: {
     type: String,
     required: true,
   },
@@ -65,5 +113,25 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  readingTime: {
+    type: Number,
+    default: 0
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  tags: {
+    type: Array,
+    required: false,
+    default: () => []
+  }
 });
+
+const isNew = ((date) => {
+  console.log(date);
+  console.log(isNewPost(date));
+  return isNewPost(date)
+})
+
 </script>
