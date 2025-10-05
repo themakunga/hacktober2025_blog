@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const pubs = (process.env.NODE_ENV === 'production');
 
-const query = queryCollection('content')
+let query = queryCollection('content')
   .order('date', 'DESC')
   .limit(10);
 
