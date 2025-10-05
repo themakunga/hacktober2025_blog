@@ -1,7 +1,8 @@
 import { defineContentConfig, defineCollection, z } from "@nuxt/content";
-import { toGithubUrl } from "./utils/functions";
+import { transformImgSrc, transformYaml } from "./utils/functions";
 
 const repository =  "https://github.com/themakunga/hacktober2025_blog_post"
+
 
 export default defineContentConfig({
   collections: {
@@ -16,7 +17,7 @@ export default defineContentConfig({
         title: z.string(),
         description: z.string(),
         date: z.date(),
-        cover: z.string().optional().transform(src => src ? toGithubUrl(src) : ''),
+        cover: z.string().optional().transform(src => src ? transformImgSrc(src) : ''),
         tags: z.array(z.string()),
         published: z.boolean(),
         author: z.string(),
@@ -33,7 +34,7 @@ export default defineContentConfig({
       schema: z.object({
         sid: z.number(),
         name: z.string(),
-        avatar: z.string().optional().transform(src => src ? toGithubUrl(src) : ''),
+        avatar: z.string().optional().transform(src => src ? transformYaml(src) : ''),
         pronouns: z.array(z.string()),
         description: z.string(),
         socials: z.array(z.object({
