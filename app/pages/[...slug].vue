@@ -8,17 +8,19 @@ useSeoMeta({
   description: post.description,
   author: post.author,
 
+  ogTitle: post.title,
+  ogDescription: post.description,
+  ogAuthor: post.author,
 })
 </script>
 
 <template>
-  <main class="w-full mx-auto py-10">
-    <NuxtLink to="/" class="text-blue-600 hover:underline">&larr; Regresar al inicio</NuxtLink>
-    <article class="prose w-full">
-
-      <ContentRenderer class="w-full" :value="post" />
-
+  <main class="w-full px-30 text-primary-content">
+    <article class="prose w-full justify-around">
+      <ContentRenderer
+        class="w-full"
+        :value="post"
+      />
     </article>
-
   </main>
 </template>

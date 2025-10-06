@@ -16,6 +16,7 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
+        category: z.string(),
         date: z.date(),
         cover: z.string().optional().transform(src => src ? transformImgSrc(src) : ''),
         tags: z.array(z.string()),
@@ -24,6 +25,21 @@ export default defineContentConfig({
         wordCount: z.number(),
         readingTime: z.number(),
       }),
+    }),
+    pages: defineCollection({
+      type: "page",
+      source: {
+        repository,
+        include: 'pages/**/*.md'
+      },
+      schema: z.object({
+        title: z.string(),
+        date: z.string(),
+        cover: z.string().optional().transform(src => src ? transformImgSrc(src) : ''),
+        tags: z.array(z.string()),
+        author: z.string(),
+        category: z.string(),
+      })
     }),
     authors: defineCollection({
       type: "data",

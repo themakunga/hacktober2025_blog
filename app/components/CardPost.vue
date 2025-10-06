@@ -37,12 +37,6 @@
           {{ title }}
         </h2>
         <div class="flex items-baseline-last">
-          <div
-            v-if="isNew(date)"
-            class="badge badge-warning badge-xs"
-          >
-            Nuevo post
-          </div>
           <NuxtLink
             v-for="(tag, idx) in tags"
             :key="idx"
